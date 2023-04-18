@@ -1,27 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  /* NAVBAR */
+  .links {
+    @apply flex items-center leading-[3.5rem] cursor-default duration-100;
   }
-}
+  .nav_header:has(> .links:hover) .links:not(:hover) {
+    @apply text-black/30;
+  }
+  .links > svg {
+    @apply rotate-90 text-xl duration-200;
+  }
+  .links:hover > svg {
+    @apply -rotate-90;
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .link_after::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px] bg-violet duration-300;
+  }
+  .link_after::after:hover {
+    @apply w-full;
+  }
+  .link_after_2::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px] bg-white duration-300;
+  }
+  .link_after_2::after:hover {
+    @apply w-full;
+  }
+
+  .links-2 {
+    @apply text-3xl py-4 px-6 flex items-center justify-between;
+  }
+  .links-2 > svg {
+    @apply rotate-90;
+  }
+  .links-2-svg > svg {
+    @apply rotate-0;
+  }
+  .links-2-svg > .active {
+    @apply rotate-90;
+  }
+
+  .sub_link_2 {
+    @apply flex items-center text-2xl font-medium hover:text-violet duration-150 gap-3;
+  }
+  .sub_link_2 > span {
+    @apply text-sm bg-gray-200 px-4 rounded-full leading-8;
+  }
+
+  .link_dropdown:hover > .dropdown_1,
+  .link_dropdown:hover > .dropdown_2,
+  .link_dropdown:hover > .dropdown_3 {
+    @apply h-auto px-6 pt-6 pb-16 flex;
+  }
+
+  .dropdown_1,
+  .dropdown_2,
+  .dropdown_3 {
+    @apply h-0 overflow-hidden absolute top-14 left-0 right-0 bg-white gap-4 duration-500;
+  }
+
+  /* MODAL FORM WRAPPER */
+  .btnForm {
+    @apply w-full flex items-center justify-between px-6 py-3 text-base font-bold rounded-full mt-10 duration-200;
+  }
+  .btnForm:disabled {
+    @apply bg-bgBtnDisable text-textBtnDisable cursor-not-allowed;
+  }
+
+  /* FOOTER */
+  .links_footer {
+    @apply flex items-center gap-2 hover:text-violet duration-150;
+  }
+
+  input[type="radio"]:checked {
+    @apply border-violet;
+  }
+  input[type="radio"]:checked + label {
+    @apply text-violet;
+  }
+  input[type="radio"]:hover {
+    @apply border-violet bg-gradient-radial;
+  }
+  input[type="radio"]:hover + label {
+    @apply text-violet;
+  }
 }
